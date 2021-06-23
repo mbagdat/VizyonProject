@@ -1,0 +1,9 @@
+﻿@model NewVizyonProject.Models.Sektor
+@{
+    ViewData["Title"] = "SektorGetir";
+}
+
+<form class="form-group">
+    @*<b>Sektor Adı</b>*@
+    @Html.TextBoxFor(s => s.SektorAdi, new { @class = "form-control" })
+</form>

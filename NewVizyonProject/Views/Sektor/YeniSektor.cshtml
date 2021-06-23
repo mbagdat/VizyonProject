@@ -1,0 +1,15 @@
+﻿@model NewVizyonProject.Models.Sektor
+@{
+    ViewData["Title"] = "YeniSektor";
+    Layout = "~/Views/Shared/_IndexLayout.cshtml";
+}
+<body>
+    <form class="form-group" method="post" style="width:75%;margin-left:auto;margin-right:auto;">
+        <b>Sektor Adı</b>
+        @Html.TextBoxFor(s => s.SektorAdi, new { @class = "form-control" })<br />
+        <button class="btn btn-primary">Kaydet</button>
+    </form>
+</body>
+</html>
+
+

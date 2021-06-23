@@ -1,0 +1,58 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        ul {
+            list-style-type: none;
+            /*margin: 0;*/
+            padding: 0;
+            overflow: hidden;
+            background-color: darkorange;
+            /*width: -moz-fit-content;*/
+            /*width: -webkit-fit-content;*/
+            width: fit-content;
+            margin-left: 90px;
+            border-radius: 5px 5px 5px 5px;
+        }
+
+        li {
+            float: left;
+        }
+
+            li a {
+                text-decoration: none;
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+            }
+
+                li a:hover {
+                    background-color: ghostwhite;
+                    text-decoration: none;
+                }
+    </style>
+</head>
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<body>
+    <div class="container" style="margin-top: 5px;">
+        <ul>
+            <li><a href="#gostergeler">GÖSTERGELER</a></li>
+            <li><a href="#projeler">PROJELER</a></li>
+            <li><a href="#faaliyetler">FAALİYETLER</a></li>
+            <li><a href="#talimatlar">TALİMATLAR</a></li>
+            <li><a href="#ilcalismaplani">İL ÇALIŞMA PLANI</a></li>
+            <li><a class="active" href="#iyiuygulama">İYİ UYGULAMA</a></li>
+            <li><a href="#raporlama">RAPORLAMA</a></li>
+        </ul>
+        <br />
+    </div>
+
+    @RenderBody()
+</body>
+</html>
