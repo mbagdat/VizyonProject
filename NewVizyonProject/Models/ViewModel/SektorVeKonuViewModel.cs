@@ -8,7 +8,7 @@ namespace NewVizyonProject.Models.ViewModel
     public class SektorVeKonuViewModel
     {
         public List<Sektor> sektors { get; set; }
-        //public List<Konu> konus { get; set; }
+        public List<Konu> konus { get; set; }
 
     }
 }

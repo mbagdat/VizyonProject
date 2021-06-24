@@ -6,52 +6,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-        ul {
-            list-style-type: none;
-            /*margin: 0;*/
-            padding: 0;
-            overflow: hidden;
-            background-color: darkorange;
-            /*width: -moz-fit-content;*/
-            /*width: -webkit-fit-content;*/
-            width: fit-content;
-            margin-left: 90px;
-            border-radius: 5px 5px 5px 5px;
-        }
-
-        li {
-            float: left;
-        }
-
-            li a {
-                text-decoration: none;
-                display: block;
-                color: white;
-                text-align: center;
-                padding: 14px 16px;
-            }
-
-                li a:hover {
-                    background-color: ghostwhite;
-                    text-decoration: none;
-                }
-    </style>
 </head>
 <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 <body>
-    <div class="container" style="margin-top: 5px;">
-        <ul>
-            <li><a href="#gostergeler">GÖSTERGELER</a></li>
-            <li><a href="#projeler">PROJELER</a></li>
-            <li><a href="#faaliyetler">FAALİYETLER</a></li>
-            <li><a href="#talimatlar">TALİMATLAR</a></li>
-            <li><a href="#ilcalismaplani">İL ÇALIŞMA PLANI</a></li>
-            <li><a class="active" href="#iyiuygulama">İYİ UYGULAMA</a></li>
-            <li><a href="#raporlama">RAPORLAMA</a></li>
-        </ul>
-        <br />
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="nav">
+        @*<a class="navbar-brand" href="/Sektor/Index/">Ana Sayfa</a>*@
+        @*<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>*@
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav" style="margin-left:510px;">
+                <li class="nav-item ">
+                    <a class="nav-link" href="/Sektor/Index/">GÖSTERGELER </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Sektor/Index/">PROJELER</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Sektor/Index/">FAALİYETLER</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Sektor/Index/">TALİMATLAR</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Sektor/Index/">İL ÇALIŞMA PLANI</a>
+                </li>
+                <li class="nav-item" active>
+                    <a class="nav-link" href="/Sektor/SektorIndex">SEKTÖR <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Sektor/KonuIndex/">KONU</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Sektor/Index/">İYİ UYGULAMA</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Sektor/Index/">RAPORLAMA</a>
+                </li>
+                @*<li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>*@
+            </ul>
+        </div>
+    </nav><br />
 
     @RenderBody()
 </body>

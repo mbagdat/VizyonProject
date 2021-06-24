@@ -50,7 +50,7 @@ namespace NewVizyonProject
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Sektor}/{action=Index}/{id?}");
+                    pattern: "{controller=Sektor}/{action=SektorIndex}/{id?}");
             });
         }
     }

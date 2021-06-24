@@ -1,0 +1,84 @@
+﻿@*@model List<Sektor>*@
+@using NewVizyonProject.Models.ViewModel
+@model SektorVeKonuViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_IndexLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sektor</title>
+</head>
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/Ajax/SektorSave.js"></script>
+<script src="~/Ajax/SektorUpdate.js"></script>
+<script src="~/Ajax/SektorDelete.js"></script>
+
+
+<body>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <div id="container" style="width:50%;">
+        <button style="margin-left:200px;" type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#mySaveModal">Yeni Sektör Kaydet</button>
+
+        <br /><br />
+
+        <div class="form-horizontal" style="margin-left:200px; margin-top:100px;">
+            <div class="form-group">
+                @*<label class="control-label;" style="margin-left: 15px; font-weight: 500;">Sektör</label>*@
+                <div class="col-md-10" style="width:280px;">
+                    @Html.DropDownList("DrpSektor", ViewBag.sektorData, "---Sektör Seçiniz", new { @class = "form-control dropdown" })
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+    @*<div style="border-left: 1px solid #0094ff; height: 400px; position: absolute; margin-left: -40px; left: 50%; top: 75px; " class="vr"></div>*@
+    @if (Model != null)
+    {
+
+        if (Model.sektors.Count != 0)
+        {
+            <table class="table table-bordered" id="table" style="width:70%;margin-left:auto;margin-right:auto; margin-top:160px;">
+                <tr style="font-weight:bold;">
+                    <td>Id</td>
+                    <td>Sektor Adi</td>
+                    <td>Sil</td>
+                    <td>Güncelle</td>
+                </tr>
+                @foreach (var item in Model.sektors)
+                {
+                    <tr>
+                        <td>@item.SektorId</td>
+                        <td>@item.SektorAdi</td>
+                        @*<td><a href="/Sektor/SektorSil/@item.SektorId" class="btn btn-danger">Sil</td>*@
+                        <td><button class="btn btn-danger" onclick="ConfirmDelete('@item.SektorAdi','@item.SektorId')">Sil</button></td>
+                        <td><button class="btn btn-success" onclick="openDetail('@item.SektorAdi',@item.SektorId)">Güncelle</button></td>
+                        @*<td><button style="margin-left:240px;" type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Güncelle</button></td>*@
+                    </tr>
+                }
+            </table>
+        }
+    }
+</body>
+</html>
+
+
+
+
+@Html.Partial("_SektorVeKonuSil")
+@Html.Partial("_SektorVeKonuGuncelle")
+@Html.Partial("_YeniSektor")
+
+

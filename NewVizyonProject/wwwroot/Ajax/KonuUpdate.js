@@ -1,23 +1,22 @@
 ﻿
-
 function openDetail(name, id) {
     $("#sektorvekonuupdatename").val(name);
     $("#sektorvekonuupdateid").val(id);
     $("#myUpdateModal").modal("toggle");
 
     $("#sektorVeKonuUpdate").click(function () {
-        sektorAdi = $("#sektorvekonuupdatename").val();
-        sektorId = $("#sektorvekonuupdateid").val();
+        konuAdi = $("#sektorvekonuupdatename").val();
+        konuId = $("#sektorvekonuupdateid").val();
         var sek = {
-            sektorAdi: sektorAdi,
-            sektorId: sektorId
+            konuAdi: konuAdi,
+            konuId: konuId
         };
         $.ajax({
             type: "POST",
             data: sek,
             content: "application/json; charset=utf-8",
             dataType: "json",
-            url: "/Sektor/SektorGuncelle/",
+            url: "/Sektor/KonuGuncelle/",
             success: function (data) {
                 $(".table").html(data.sek);
             }
@@ -26,5 +25,3 @@ function openDetail(name, id) {
         setInterval('location.reload()', 400);
     });
 }
-
-

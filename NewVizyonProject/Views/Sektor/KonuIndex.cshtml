@@ -1,0 +1,74 @@
+﻿@using NewVizyonProject.Models.ViewModel
+@model SektorVeKonuViewModel
+@{
+    ViewData["Title"] = "KonuIndex";
+    Layout = "~/Views/Shared/_IndexLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Konu</title>
+</head>
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/Ajax/KonuSave.js"></script>
+<script src="~/Ajax/KonuUpdate.js"></script>
+<script src="~/Ajax/KonuDelete.js"></script>
+<body>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <button style="margin-left:210px;" type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#myKonuModal">Yeni Konu Kaydet</button>
+    <br />
+    <br />
+
+
+    <div class="form-horizontal" style="margin-left:200px; margin-top:100px;">
+        <div class="form-group">
+            @*<label class="control-label;" style="margin-left: 15px; font-weight: 500;">Sektör</label>*@
+            <div class="col-md-10" style="width:280px;">
+                @Html.DropDownList("Drpkonu", ViewBag.konuData, "---Konu Seçiniz", new { @class = "form-control dropdown" })
+            </div>
+        </div>
+    </div>
+
+
+
+    @if (Model != null)
+    {
+
+        if (Model.konus.Count != 0)
+        {
+            <table class="table table-bordered" id="table" style="width:70%;margin-left:auto;margin-right:auto; margin-top:160px;">
+                <tr style="font-weight:bold;">
+                    <td>Id</td>
+                    <td>Konu Adi</td>
+                    <td>Sil</td>
+                    <td>Güncelle</td>
+                </tr>
+                @foreach (var konu in Model.konus)
+                {
+                    <tr>
+                        <td>@konu.KonuId</td>
+                        <td>@konu.KonuAdi</td>
+                        @*<td><a href="/Sektor/KonuSil/@konu.KonuId" class="btn btn-danger">Sil</td>*@
+                        <td><button class="btn btn-danger" onclick="ConfirmDelete('@konu.KonuAdi', '@konu.KonuId')">Sil</button></td>
+                        <td><button class="btn btn-success" onclick="openDetail('@konu.KonuAdi',@konu.KonuId)">Güncelle</button></td>
+                        @*<td><button style="margin-left:240px;" type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Güncelle</button></td>*@
+                    </tr>
+                }
+            </table>
+        }
+    }
+</body>
+</html>
+
+
+@Html.Partial("_SektorVeKonuSil")
+@Html.Partial("_YeniKonu")
+@Html.Partial("_SektorVeKonuGuncelle")
