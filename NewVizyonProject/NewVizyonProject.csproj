@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <None Include="wwwroot\Ajax\SektorSave.js" />
-    <None Include="wwwroot\Ajax\SektorSil.js" />
+    <None Include="wwwroot\Ajax\SektorDelete.js" />
     <None Include="wwwroot\Ajax\SektorUpdate.js" />
     <None Include="wwwroot\js\site.js" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
