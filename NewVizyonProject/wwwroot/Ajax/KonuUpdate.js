@@ -7,18 +7,18 @@ function openDetail(name, id) {
     $("#sektorVeKonuUpdate").click(function () {
         konuAdi = $("#sektorvekonuupdatename").val();
         konuId = $("#sektorvekonuupdateid").val();
-        var sek = {
+        var konu = {
             konuAdi: konuAdi,
             konuId: konuId
         };
         $.ajax({
             type: "POST",
-            data: sek,
+            data: konu,
             content: "application/json; charset=utf-8",
             dataType: "json",
             url: "/Sektor/KonuGuncelle/",
             success: function (data) {
-                $(".table").html(data.sek);
+                $(".table").html(data.konu);
             }
         });
         $("#myUpdateModal").modal("hide");

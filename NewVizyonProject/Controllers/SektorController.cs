@@ -120,6 +120,12 @@ namespace NewVizyonProject.Controllers
         }
         //KONU KISMI BITIS
         //---------------------------------------------------------------------------------------------------
-
+        //AÇIKLAMA KISMI
+        //--------------------------------------------------------------------------------------------------
+        public IActionResult AciklamaIndex()
+        {
+            var aciklamalar = context.Aciklamalar.ToList();
+            return View(aciklamalar);
+        }
     }
 }

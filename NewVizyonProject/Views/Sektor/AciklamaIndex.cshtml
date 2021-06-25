@@ -1,0 +1,67 @@
+﻿@using NewVizyonProject.Models
+@model List<Aciklama>
+@{
+    ViewData["Title"] = "AciklamaIndex";
+    Layout = "~/Views/Shared/_IndexLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>İyi Uygulama</title>
+</head>
+
+<body>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <button style="margin-left:210px;" type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#myAciklamaModal">İyi Uygulama</button>
+    <br />
+    <br />
+
+    @if (Model != null)
+    {
+
+        if (Model.Count != 0)
+        {
+            <table class="table table-bordered" id="table" style="width:70%;margin-left:auto;margin-right:auto; margin-top:160px;">
+                <tr style="font-weight:bold;">
+                    <td>Id</td>
+                    <td>Detay</td>
+                    <td>Oluşturulma Tarihi</td>
+                    <td>Güncelleme Tarihi</td>
+                    <td>Onay Tarihi</td>
+                    <td>Puan</td>
+                    <td>Sil</td>
+                    <td>Güncelle</td>
+
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.AciklamaId</td>
+                        <td>@item.Detay</td>
+                        <td>@item.OlusturmaTarihi</td>
+                        <td>@item.GuncellemeTarihi</td>
+                        <td>@item.OnayTarihi</td>
+                        <td>@item.Puan</td>
+                        <td><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></td>
+                        <td><button class="btn btn-success">Güncelle</button></td>
+                        @*<td><a href="/Sektor/KonuSil/@konu.KonuId" class="btn btn-danger">Sil</td>*@
+
+                        @*<td><button style="margin-left:240px;" type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Güncelle</button></td>*@
+                    </tr>
+                }
+
+
+            </table>
+        }
+    }
+</body>
+</html>
+
+@Html.Partial("_Aciklama")

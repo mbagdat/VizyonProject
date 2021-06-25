@@ -31,41 +31,33 @@
 
         <br /><br />
 
-        <div class="form-horizontal" style="margin-left:200px; margin-top:100px;">
+        <div class="form-horizontal" style="margin-left:200px; margin-top:50px;">
             <div class="form-group">
-                @*<label class="control-label;" style="margin-left: 15px; font-weight: 500;">Sektör</label>*@
                 <div class="col-md-10" style="width:280px;">
                     @Html.DropDownList("DrpSektor", ViewBag.sektorData, "---Sektör Seçiniz", new { @class = "form-control dropdown" })
                 </div>
             </div>
         </div>
-
-
-
-
     </div>
-    @*<div style="border-left: 1px solid #0094ff; height: 400px; position: absolute; margin-left: -40px; left: 50%; top: 75px; " class="vr"></div>*@
     @if (Model != null)
     {
 
         if (Model.sektors.Count != 0)
         {
-            <table class="table table-bordered" id="table" style="width:70%;margin-left:auto;margin-right:auto; margin-top:160px;">
+            <table class="table table-bordered col-md-12" id="table" style="width:50%;margin-left:490px; margin-top:50px;">
                 <tr style="font-weight:bold;">
-                    <td>Id</td>
-                    <td>Sektor Adi</td>
-                    <td>Sil</td>
-                    <td>Güncelle</td>
+                    <td class="col-md-4">Id</td>
+                    <td class="col-md-4">Sektor Adı</td>
+                    <td class="col-md-1">Sil</td>
+                    <td class="col-md-1">Güncelle</td>
                 </tr>
                 @foreach (var item in Model.sektors)
                 {
                     <tr>
                         <td>@item.SektorId</td>
                         <td>@item.SektorAdi</td>
-                        @*<td><a href="/Sektor/SektorSil/@item.SektorId" class="btn btn-danger">Sil</td>*@
-                        <td><button class="btn btn-danger" onclick="ConfirmDelete('@item.SektorAdi','@item.SektorId')">Sil</button></td>
-                        <td><button class="btn btn-success" onclick="openDetail('@item.SektorAdi',@item.SektorId)">Güncelle</button></td>
-                        @*<td><button style="margin-left:240px;" type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Güncelle</button></td>*@
+                        <td><button class="btn btn-danger" onclick="ConfirmDelete('@item.SektorAdi','@item.SektorId')"><span class="glyphicon glyphicon-trash" aria-hidden="true"></button></td>
+                        <td><button class="btn btn-success" onclick="openDetail('@item.SektorAdi',@item.SektorId)"><span class="glyphicon glyphicon-edit"></span></button></td>
                     </tr>
                 }
             </table>
@@ -78,7 +70,7 @@
 
 
 @Html.Partial("_SektorVeKonuSil")
-@Html.Partial("_SektorVeKonuGuncelle")
+@Html.Partial("_SektorUpdate")
 @Html.Partial("_YeniSektor")
 
 

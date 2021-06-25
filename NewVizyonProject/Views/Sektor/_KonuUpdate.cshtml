@@ -1,9 +1,8 @@
-﻿
-
+﻿@model NewVizyonProject.Models.ViewModel.SektorVeKonuViewModel
 
 <div class="container">
 
-    <div class="modal fade" id="myDeleteModal" role="dialog">
+    <div class="modal fade" id="myUpdateModal" role="dialog">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
@@ -12,14 +11,17 @@
                 </div>
 
                 <div class="modal-body">
-                    <h4 style="color:red;">Seçilen Sektör Silinecektir...</h4><br />
                     <form class="form-group">
-                        @*<b>Sektor Adı</b><br />*@
-                        <h5 id="sektorvekonuname"></h5>
+                        @*<b>Sektor Id</b>*@
+                        <input id="sektorvekonuupdateid" type="hidden" class="form-control" />
+                        <b>Sektor Adı</b><br /><br />
+                        <input id="sektorvekonuupdatename" type="text" class="form-control" />
+
+                        @*<h4 style="color:red;" id="sektorvekonuupdatename"></h4>*@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" id="sektorVeKonuDelete" class="btn btn-outline-success">Ok</button>
+                    <button type="submit" id="sektorVeKonuUpdate" class="btn btn-outline-success">Güncelle</button>
                     <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
                 </div>
 

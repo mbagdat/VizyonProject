@@ -28,9 +28,8 @@
     <br />
 
 
-    <div class="form-horizontal" style="margin-left:200px; margin-top:100px;">
+    <div class="form-horizontal" style="margin-left:200px; margin-top:50px;">
         <div class="form-group">
-            @*<label class="control-label;" style="margin-left: 15px; font-weight: 500;">Sektör</label>*@
             <div class="col-md-10" style="width:280px;">
                 @Html.DropDownList("Drpkonu", ViewBag.konuData, "---Konu Seçiniz", new { @class = "form-control dropdown" })
             </div>
@@ -44,22 +43,20 @@
 
         if (Model.konus.Count != 0)
         {
-            <table class="table table-bordered" id="table" style="width:70%;margin-left:auto;margin-right:auto; margin-top:160px;">
+            <table class="table table-bordered col-md-12" id="table" style="width: 50%; margin-left: 490px; margin-top: 50px;">
                 <tr style="font-weight:bold;">
-                    <td>Id</td>
-                    <td>Konu Adi</td>
-                    <td>Sil</td>
-                    <td>Güncelle</td>
+                    <td class="col-md-4">Id</td>
+                    <td class="col-md-4">Konu Adi</td>
+                    <td class="col-md-1">Sil</td>
+                    <td class="col-md-1">Güncelle</td>
                 </tr>
                 @foreach (var konu in Model.konus)
                 {
                     <tr>
                         <td>@konu.KonuId</td>
                         <td>@konu.KonuAdi</td>
-                        @*<td><a href="/Sektor/KonuSil/@konu.KonuId" class="btn btn-danger">Sil</td>*@
-                        <td><button class="btn btn-danger" onclick="ConfirmDelete('@konu.KonuAdi', '@konu.KonuId')">Sil</button></td>
-                        <td><button class="btn btn-success" onclick="openDetail('@konu.KonuAdi',@konu.KonuId)">Güncelle</button></td>
-                        @*<td><button style="margin-left:240px;" type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Güncelle</button></td>*@
+                        <td><button class="btn btn-danger" onclick="ConfirmDelete('@konu.KonuAdi', '@konu.KonuId')"><span class="glyphicon glyphicon-trash" aria-hidden="true"></button></td>
+                        <td><button class="btn btn-success" onclick="openDetail('@konu.KonuAdi',@konu.KonuId)"><span class="glyphicon glyphicon-edit"></span></button></td>
                     </tr>
                 }
             </table>
@@ -71,4 +68,4 @@
 
 @Html.Partial("_SektorVeKonuSil")
 @Html.Partial("_YeniKonu")
-@Html.Partial("_SektorVeKonuGuncelle")
+@Html.Partial("_konuUpdate")

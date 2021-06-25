@@ -1,20 +1,20 @@
 ﻿
 
 function openDetail(name, id) {
-    $("#sektorvekonuupdatename").val(name);
-    /*$("#sektorvekonuupdateid").val(id);*/
-    $("#myUpdateModal").modal("toggle");
+    $("#sektorupdatename").val(name);
+    $("#sektorupdateid").val(id);
+    $("#mySektorUpdateModal").modal("toggle");
 
-    $("#sektorVeKonuUpdate").click(function () {
-        //sektorAdi = $("#sektorvekonuupdatename").val();
-        //sektorId = $("#sektorvekonuupdateid").val();
-        //var sek = {
-        //    sektorAdi: sektorAdi,
-        //    sektorId: sektorId
-        //};
+    $("#sektorUpdate").click(function () {
+        sektorAdi = $("#sektorupdatename").val();
+        sektorId = $("#sektorupdateid").val();
+        var sek = {
+            sektorAdi: sektorAdi,
+            sektorId: sektorId
+        };
         $.ajax({
             type: "POST",
-            data: { SektorId: id },
+            data: sek,
             content: "application/json; charset=utf-8",
             dataType: "json",
             url: "/Sektor/SektorGuncelle/",
@@ -22,9 +22,11 @@ function openDetail(name, id) {
                 $(".table").html(data.sek);
             }
         });
-        $("#myUpdateModal").modal("hide");
+        $("#mySektorUpdateModal").modal("hide");
         setInterval('location.reload()', 400);
     });
 }
+
+
 
 
