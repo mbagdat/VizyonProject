@@ -2,6 +2,10 @@
 $(function () {
     $("#sektorSave").click(function () {
         sektorAdi = $('#txtsektoradi').val()
+        if (sektorAdi=="") {
+            alert("Sektor Adı Boş Olamaz!");
+            return;
+        }
         var sektor = {
             SektorAdi: sektorAdi
         };

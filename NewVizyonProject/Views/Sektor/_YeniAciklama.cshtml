@@ -1,4 +1,5 @@
-﻿<div class="container">
+﻿
+<div class="container">
 
     <div class="modal fade" id="myAciklamaModal" role="dialog">
         <div class="modal-dialog modal-lg">
@@ -11,16 +12,6 @@
                 <div class="modal-body">
                     <form class="form-group col-md-12">
                         <div class="col-md-6">
-                            <label class="control-label">Oluşturulma Tarihi</label>
-                            <input id="olusturmaTarihi" name="olusturmaTarihi" type="date" value="" />
-                        </div>
-
-                        <div class="col-md-6">
-                            <label for="aciklama">Güncelleme Tarihi</label>
-                            <input id="guncelleTarihi" name="guncelleTarihi" type="date" value="" /><br />
-                        </div>
-
-                        <div class="col-md-6">
                             <label for="aciklama">Onay Tarihi</label>
                             <input id="onayTarihi" name="onayTarihi" type="date" value="" />
                         </div>
@@ -30,18 +21,16 @@
                             <input id="puanVer" name="puanVer" type="number" value="1" min="1" max="10" />
                         </div>
 
-                        <div class="col-md-12">
+                        <div class="col-md-12" style="margin-top:20px;">
                             <label for="aciklama">Açıklama</label>
                             <textarea style="resize: none;" class="form-control" cols="20" id="Description" name="Description" rows="2"></textarea>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" id="sektorUpdate" class="btn btn-primary">Save</button>
+                    <button type="submit" id="aciklamaSave" class="btn btn-outline-primary">Save</button>
                     <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
                 </div>
-
-
             </div>
         </div>
     </div>

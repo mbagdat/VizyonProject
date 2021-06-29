@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using NewVizyonProject.Models;
 using NewVizyonProject.Models.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 
 namespace NewVizyonProject.Controllers
 {
@@ -19,11 +21,18 @@ namespace NewVizyonProject.Controllers
             return View();
         }
         //SEKTOR KISMI
-        //---------------------------------------------------------------------------------------------------
-        [HttpGet]
-        public IActionResult YeniSektor()
+        //-----------------------------------------------------------------------
+        //[HttpGet]
+        //public IActionResult YeniSektor()
+        //{
+        //    return View();
+        //}
+        public IActionResult SektorIndex()
         {
-            return View();
+            SelectList selectListSektor = new SelectList(context.Sektorler, "SektorId", "SektorAdi");
+            ViewBag.sektorData = selectListSektor;
+            model.sektors = context.Sektorler.ToList();
+            return View(model);
         }
 
         [HttpPost]
@@ -56,19 +65,13 @@ namespace NewVizyonProject.Controllers
             return RedirectToAction("SektorIndex");
         }
 
-        public IActionResult SektorIndex()
-        {
-            SelectList selectListSektor = new SelectList(context.Sektorler, "SektorId", "SektorAdi");
-            ViewBag.sektorData = selectListSektor;
-            model.sektors = context.Sektorler.ToList();
-            return View(model);
-        }
+
         //SEKTOR KISMI BITIS
-        //---------------------------------------------------------------------------------------------------
+        //---------------------------------------------------------------------
 
 
         //KONU KISMI 
-        //---------------------------------------------------------------------------------------------------
+        //---------------------------------------------------------------------
         public IActionResult KonuIndex()
         {
             SelectList selectListKonu = new SelectList(context.Konular, "KonuId", "KonuAdi");
@@ -77,11 +80,11 @@ namespace NewVizyonProject.Controllers
             return View(model);
         }
 
-        [HttpGet]
-        public IActionResult YeniKonu()
-        {
-            return View();
-        }
+        //[HttpGet]
+        //public IActionResult YeniKonu()
+        //{
+        //    return View();
+        //}
 
         [HttpPost]
         public IActionResult YeniKonu(Konu konu)
@@ -106,11 +109,11 @@ namespace NewVizyonProject.Controllers
             return RedirectToAction("KonuIndex");
         }
 
-        public IActionResult KonuGetir(int id)
-        {
-            var sek = context.Konular.Find(id);
-            return View("KonuGetir", sek);
-        }
+        //public IActionResult KonuGetir(int id)
+        //{
+        //    var sek = context.Konular.Find(id);
+        //    return View("KonuGetir", sek);
+        //}
         public IActionResult KonuGuncelle(Konu konu)
         {
             var sek = context.Konular.Find(konu.KonuId);
@@ -124,8 +127,71 @@ namespace NewVizyonProject.Controllers
         //--------------------------------------------------------------------------------------------------
         public IActionResult AciklamaIndex()
         {
-            var aciklamalar = context.Aciklamalar.ToList();
-            return View(aciklamalar);
+            //var aciklamalar = context.Aciklamalar.ToList();
+            //return View(aciklamalar);
+            return View(context.Aciklamalar.ToList());
+        }
+        [HttpPost]
+        public IActionResult YeniAciklama(Aciklama aciklama)
+        {
+            if (string.IsNullOrEmpty(aciklama.Detay))
+            {
+                return null;
+            }
+            else
+            {
+                if (aciklama != null)
+                {
+                    aciklama.OlusturmaTarihi = DateTime.Now;
+                    aciklama.GuncellemeTarihi = DateTime.Now;
+                }
+                context.Aciklamalar.Add(aciklama);
+                context.SaveChanges();
+                return RedirectToAction("AciklamaIndex");
+            }
+
+        }
+
+        public IActionResult AciklamaGuncelle(Aciklama aciklama)
+        {
+            if (string.IsNullOrEmpty(aciklama.Detay))
+            {
+                return null;
+            }
+            else
+            {
+                if (aciklama != null)
+                {
+                    aciklama.GuncellemeTarihi = DateTime.Now;
+                }
+                var ack = context.Aciklamalar.Find(aciklama.AciklamaId);
+                ack.Detay = aciklama.Detay;
+                ack.OnayTarihi = aciklama.OnayTarihi;
+                ack.Puan = aciklama.Puan;
+                ack.GuncellemeTarihi = aciklama.GuncellemeTarihi;
+                context.SaveChanges();
+                return RedirectToAction("AciklamaIndex");
+            }
+        }
+
+        public IActionResult AciklamaSil(int AciklamaId)
+        {
+            var ack = context.Aciklamalar.Find(AciklamaId);
+            context.Aciklamalar.Remove(ack);
+            context.SaveChanges();
+            return RedirectToAction("AciklamaIndex");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> AciklamaIndex(string Detaysearch)
+        {
+            ViewData["Getdetaydetails"] = Detaysearch;
+            var detayquery = from x in context.Aciklamalar select x;
+            if (!String.IsNullOrEmpty(Detaysearch))
+            {
+                detayquery = detayquery.Where(a => a.Detay.Contains(Detaysearch));
+            }
+            return View(await detayquery.AsNoTracking().ToListAsync());
         }
     }
 }

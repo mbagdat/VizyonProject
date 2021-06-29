@@ -1,0 +1,36 @@
+﻿
+<div class="container">
+
+    <div class="modal fade" id="AciklamaUpdateModal" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    @*<h4 class="modal-title"></h4>*@
+                </div>
+
+                <div class="modal-body">
+                    <form class="form-group">
+                        @*<b>Sektor Id</b>*@
+                        <input id="aciklamaupdateid" type="hidden" class="form-control" />
+                        <b>Açıklama</b><br /><br />
+                        <input id="detayupdatename" type="text" class="form-control" cols="20" rows="2" /><br /><br />
+                        @*<textarea style="resize: none;" class="form-control" cols="20" id="Description" name="Description" rows="2"></textarea>*@
+                        <b>Onay Tarihi</b><br /><br />
+                        <input id="detayupdatedate" type="date" class="form-control" /><br /><br />
+                        <b>Puan</b><br /><br />
+                        <input id="puanver" name="puanVer" type="number" value="1" min="1" max="10" />
+
+                        @*<h4 style="color:red;" id="sektorvekonuupdatename"></h4>*@
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="aciklamaUpdate" class="btn btn-outline-success">Güncelle</button>
+                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,12 @@
-﻿$(function () {
+﻿
+
+$(function () {
     $("#konuSave").click(function () {
         KonuAdi = $('#txtkonuadi').val()
+        //if (KonuAdi == "") {
+        //    alert("Konu Adı Boş Olamaz!");
+        //    return;
+        //}
         var konu = {
             KonuAdi: KonuAdi
         };
