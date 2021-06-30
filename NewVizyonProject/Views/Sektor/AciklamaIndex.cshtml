@@ -1,5 +1,5 @@
 ﻿@using NewVizyonProject.Models
-@model IEnumerable<Aciklama>
+@model List<Aciklama>
 @{
     ViewData["Title"] = "AciklamaIndex";
     Layout = "~/Views/Shared/_IndexLayout.cshtml";
@@ -21,28 +21,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-
-
-    @*<form method="GET">
-            <p style="float: right;">
-                <input id="search-focus" type="search" id="form1" class="form-control" value="@ViewData["Getdetaydetails"]" name="Detaysearch" style="width:250px;" placeholder="Lütfen Detay Yazınız !!!" />
-                <button type="submit" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-search"></span>
-                </button>
-            </p>
-        </form>*@
-
-    @*<form method="GET" style="margin-left:1500px;max-width:300px">
-            <input id="search-focus" type="search" id="form1" class="form-control" value="@ViewData["Getdetaydetails"]" name="Detaysearch" placeholder="Lütfen Detay Yazınız !!!" />
-            <button style="float:right;" type="submit" class="btn btn-primary">
-                <span class="glyphicon glyphicon-search"></span>
-            </button>
-        </form>*@
-    @*<form method="GET" style="margin-left:1350px;" class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" id="Search" type="search" placeholder="Search">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-        </form>*@
-
     <div class="container">
         <div class="form-group">
             <div class="input-group">
@@ -55,11 +33,11 @@
     <button style="margin-left:210px;" type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#myAciklamaModal">İyi Uygulama</button>
 
 
-    @*@if (Model != null)
+    @if (Model != null)
         {
 
             if (Model.Count != 0)
-            {*@
+            {
     <table class="table table-bordered" id="table" style="width:70%;margin-left:auto;margin-right:auto; margin-top:50px;">
         <tr style="font-weight:bold;">
             <td>Id</td>
@@ -84,18 +62,14 @@
 
                 <td><button class="btn btn-danger" onclick="ConfirmDelete('@item.Detay', '@item.AciklamaId')"><span class="glyphicon glyphicon-trash" aria-hidden="true"></button></td>
                 <td><button class="btn btn-success" onclick="openDetail('@item.Detay', '@item.OnayTarihi','@item.Puan','@item.AciklamaId')"><span class="glyphicon glyphicon-edit"></span></button></td>
-                @*<td><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></td>
-                    <td><button class="btn btn-success"><span class="glyphicon glyphicon-edit"></span></button></td>*@
-                @*<td><a href="/Sektor/KonuSil/@konu.KonuId" class="btn btn-danger">Sil</td>*@
-
-                @*<td><button style="margin-left:240px;" type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Güncelle</button></td>*@
+    
             </tr>
         }
 
 
     </table>
-    @*}
-        }*@
+    }
+        }
 </body>
 </html>
 
