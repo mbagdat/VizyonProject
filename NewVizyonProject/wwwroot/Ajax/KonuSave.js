@@ -3,10 +3,10 @@
 $(function () {
     $("#konuSave").click(function () {
         KonuAdi = $('#txtkonuadi').val()
-        //if (KonuAdi == "") {
-        //    alert("Konu Adı Boş Olamaz!");
-        //    return;
-        //}
+        if (KonuAdi == "") {
+            alert("Konu Adı Boş Olamaz!");
+            return;
+        }
         var konu = {
             KonuAdi: KonuAdi
         };
@@ -15,7 +15,7 @@ $(function () {
             data: konu,
             content: "application/json; charset=utf-8",
             dataType: "json",
-            url: "/Sektor/YeniKonu/",
+            url: "/Default/CreateKonu/",
             success: function (data) {
                 $(".table").html(data.KonuAdi);
             }

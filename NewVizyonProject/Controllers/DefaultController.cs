@@ -4,14 +4,13 @@ using Microsoft.EntityFrameworkCore;
 using NewVizyonProject.Models;
 using NewVizyonProject.Models.ViewModel;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 
 namespace NewVizyonProject.Controllers
 {
-    public class SektorController : Controller
+    public class DefaultController : Controller
     {
         VizyonContext context = new VizyonContext();
         SektorVeKonuViewModel model = new SektorVeKonuViewModel();
@@ -36,20 +35,13 @@ namespace NewVizyonProject.Controllers
         }
 
         [HttpPost]
-        public IActionResult YeniSektor(Sektor sektor)
+        public IActionResult CreateSektor(Sektor sektor)
         {
-            if (string.IsNullOrEmpty(sektor.SektorAdi))
-            {
-                return null;
-            }
-            else
-            {
-                context.Sektorler.Add(sektor);
-                context.SaveChanges();
-                return RedirectToAction("SektorIndex");
-            }
+            context.Sektorler.Add(sektor);
+            context.SaveChanges();
+            return RedirectToAction("SektorIndex");
         }
-        public IActionResult SektorSil(int SektorId)
+        public IActionResult DeleteSektor(int SektorId)
         {
             var sek = context.Sektorler.Find(SektorId);
             context.Sektorler.Remove(sek);
@@ -57,7 +49,7 @@ namespace NewVizyonProject.Controllers
             return RedirectToAction("SektorIndex");
         }
 
-        public IActionResult SektorGuncelle(Sektor sektor)
+        public IActionResult UpdateSektor(Sektor sektor)
         {
             var sek = context.Sektorler.Find(sektor.SektorId);
             sek.SektorAdi = sektor.SektorAdi;
@@ -87,21 +79,15 @@ namespace NewVizyonProject.Controllers
         //}
 
         [HttpPost]
-        public IActionResult YeniKonu(Konu konu)
+        public IActionResult CreateKonu(Konu konu)
         {
-            if (string.IsNullOrEmpty(konu.KonuAdi))
-            {
-                return null;
-            }
-            else
-            {
-                context.Konular.Add(konu);
-                context.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            context.Konular.Add(konu);
+            context.SaveChanges();
+            return RedirectToAction("Index");
+
         }
 
-        public IActionResult KonuSil(int SektorId)
+        public IActionResult DeleteKonu(int SektorId)
         {
             var sek = context.Konular.Find(SektorId);
             context.Konular.Remove(sek);
@@ -114,13 +100,15 @@ namespace NewVizyonProject.Controllers
         //    var sek = context.Konular.Find(id);
         //    return View("KonuGetir", sek);
         //}
-        public IActionResult KonuGuncelle(Konu konu)
+        public IActionResult UpdateKonu(Konu konu)
         {
             var sek = context.Konular.Find(konu.KonuId);
             sek.KonuAdi = konu.KonuAdi;
             context.SaveChanges();
             return RedirectToAction("KonuIndex");
         }
+
+
         //KONU KISMI BITIS
         //---------------------------------------------------------------------------------------------------
         //AÇIKLAMA KISMI
@@ -132,27 +120,27 @@ namespace NewVizyonProject.Controllers
             return View(context.Aciklamalar.ToList());
         }
         [HttpPost]
-        public IActionResult YeniAciklama(Aciklama aciklama)
+        public IActionResult CreateAciklama(Aciklama aciklama)
         {
-            if (string.IsNullOrEmpty(aciklama.Detay))
+            //if (string.IsNullOrEmpty(aciklama.Detay))
+            //{
+            //    return null;
+            //}
+            //else
+            //{
+            if (aciklama != null)
             {
-                return null;
+                aciklama.OlusturmaTarihi = DateTime.Now;
+                aciklama.GuncellemeTarihi = DateTime.Now;
             }
-            else
-            {
-                if (aciklama != null)
-                {
-                    aciklama.OlusturmaTarihi = DateTime.Now;
-                    aciklama.GuncellemeTarihi = DateTime.Now;
-                }
-                context.Aciklamalar.Add(aciklama);
-                context.SaveChanges();
-                return RedirectToAction("AciklamaIndex");
-            }
+            context.Aciklamalar.Add(aciklama);
+            context.SaveChanges();
+            return RedirectToAction("AciklamaIndex");
+            //}
 
         }
 
-        public IActionResult AciklamaGuncelle(Aciklama aciklama)
+        public IActionResult UpdateAciklama(Aciklama aciklama)
         {
             if (string.IsNullOrEmpty(aciklama.Detay))
             {
@@ -174,7 +162,7 @@ namespace NewVizyonProject.Controllers
             }
         }
 
-        public IActionResult AciklamaSil(int AciklamaId)
+        public IActionResult DeleteAciklama(int AciklamaId)
         {
             var ack = context.Aciklamalar.Find(AciklamaId);
             context.Aciklamalar.Remove(ack);
@@ -193,5 +181,11 @@ namespace NewVizyonProject.Controllers
             }
             return View(await detayquery.AsNoTracking().ToListAsync());
         }
+
+        //public IActionResult Paagination()
+        //{
+        //    context.Sektorler.ToList();
+        //    return View();
+        //}
     }
 }

@@ -14,7 +14,7 @@ $(function () {
             data: sektor,
             content: "application/json; charset=utf-8",
             dataType: "json",
-            url: "/Sektor/YeniSektor/",
+            url: "/Default/CreateSektor/",
             success: function (data) {
                 $(".table").html(data.SektorAdi);
             }

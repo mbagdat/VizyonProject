@@ -4,7 +4,6 @@ function openDetail(detay, onaytarihi, puan, id) {
     $("#detayupdatedate").val(onaytarihi);
     $("#puanver").val(puan);
     $("#aciklamaupdateid").val(id);
-
     $("#AciklamaUpdateModal").modal("toggle");
 
     $("#aciklamaUpdate").click(function () {
@@ -21,14 +20,14 @@ function openDetail(detay, onaytarihi, puan, id) {
             Detay: Detay,
             OnayTarihi: OnayTarihi,
             Puan: Puan,
-            AciklamaId: id
+            AciklamaId: AciklamaId
         };
         $.ajax({
             type: "POST",
             data: aciklama,
             content: "application/json; charset=utf-8",
             dataType: "json",
-            url: "/Sektor/AciklamaGuncelle/",
+            url: "/Default/UpdateAciklama/",
             success: function (data) {
                 $(".table").html(data.aciklama);
             }

@@ -16,7 +16,7 @@ function openDetail(name, id) {
             data: konu,
             content: "application/json; charset=utf-8",
             dataType: "json",
-            url: "/Sektor/KonuGuncelle/",
+            url: "/Default/KonuGuncelle/",
             success: function (data) {
                 $(".table").html(data.konu);
             }

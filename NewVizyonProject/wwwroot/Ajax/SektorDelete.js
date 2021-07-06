@@ -2,10 +2,10 @@
 
 function ConfirmDelete(sektorAdi, SektorId) {
   
-    $("#sektorvekonuname").text(sektorAdi);
+    $("#sektorname").text(sektorAdi);
   
     $("#myDeleteModal").modal();
-    $("#sektorVeKonuDelete").click(function () {
+    $("#sektorDelete").click(function () {
         
       
         $.ajax({
@@ -13,7 +13,7 @@ function ConfirmDelete(sektorAdi, SektorId) {
             data: { SektorId: SektorId},
             content: "application/json; charset=utf-8",
             dataType: "json",
-            url: "/Sektor/SektorSil/",
+            url: "/Default/DeleteSektor/",
             success: function (data) {
                 $(".table").html(data.SektorId);
             }

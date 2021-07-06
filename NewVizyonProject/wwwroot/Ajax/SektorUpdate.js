@@ -17,7 +17,7 @@ function openDetail(name, id) {
             data: sek,
             content: "application/json; charset=utf-8",
             dataType: "json",
-            url: "/Sektor/SektorGuncelle/",
+            url: "/Default/UpdateSektor/",
             success: function (data) {
                 $(".table").html(data.sek);
             }

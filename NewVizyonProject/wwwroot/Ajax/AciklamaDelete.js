@@ -14,7 +14,7 @@ function ConfirmDelete(Detay, AciklamaId) {
             data: { AciklamaId: AciklamaId },
             content: "application/json; charset=utf-8",
             dataType: "json",
-            url: "/Sektor/AciklamaSil/",
+            url: "/Default/DeleteAciklama/",
             success: function (data) {
                 $(".table").html(data.AciklamaId);
             }

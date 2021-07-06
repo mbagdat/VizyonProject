@@ -1,9 +1,13 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NewVizyonProject.Models;
+using NewVizyonProject.Models.Validators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +27,8 @@ namespace NewVizyonProject
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddFluentValidation();
+            services.AddTransient<IValidator<Sektor>, SektorValidator>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,7 +55,7 @@ namespace NewVizyonProject
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Sektor}/{action=SektorIndex}/{id?}");
+                    pattern: "{controller=Default}/{action=SektorIndex}/{id?}");
             });
         }
     }
