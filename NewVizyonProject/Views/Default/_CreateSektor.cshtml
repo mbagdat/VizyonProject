@@ -12,10 +12,11 @@
                 </div>
 
                 <div class="modal-body">
-                    <form class="form-group">
+                    <form class="form-group" id="sektorkaydet">
                         <label>Sektör Adı</label>
-                        <input id="txtsektoradi" type="text" placeholder="Sektör Adı Giriniz" class="form-control" />
-                        <span ></span>
+                        <input id="txtsektoradi" type="text" required placeholder="Sektör Adı Giriniz" class="form-control" />
+                        <span class="requiredField" id="txtsektoradiRequired" style="display:none;">Bu alan zorunludur!</span>
+                        
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -26,3 +27,8 @@
         </div>
     </div>
 </div>
+<style>
+    .requiredField {
+        color: red;
+    }
+</style>

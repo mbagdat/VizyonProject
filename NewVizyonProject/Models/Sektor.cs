@@ -10,7 +10,6 @@ namespace NewVizyonProject.Models
     public class Sektor
     {
         public int SektorId { get; set; }
-        [Required(ErrorMessage = "Sektör Adı Boş Geçilemez !!!")]
         public string SektorAdi { get; set; }
 
 

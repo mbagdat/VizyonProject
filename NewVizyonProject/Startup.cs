@@ -7,7 +7,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NewVizyonProject.Models;
-using NewVizyonProject.Models.Validators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +27,6 @@ namespace NewVizyonProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews().AddFluentValidation();
-            services.AddTransient<IValidator<Sektor>, SektorValidator>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

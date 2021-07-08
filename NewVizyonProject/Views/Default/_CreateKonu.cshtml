@@ -6,7 +6,6 @@
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
-
                     <h4 class="modal-title">Yeni Konu Ekleme</h4>
                 </div>
 
@@ -14,11 +13,11 @@
                     <form class="form-group">
                         @*<label>Sektör Adı</label>*@
                         <input id="txtkonuadi" type="text" placeholder="Konu İçeriği Giriniz" class="form-control" />
+                        <span class="requiredField" id="txtskonuadiRequired" style="display:none;">Bu alan zorunludur!</span>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" id="konuSave" class="btn btn-outline-primary">Kaydet</button>
-
                     <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -26,3 +25,8 @@
         </div>
     </div>
 </div>
+<style>
+    .requiredField {
+        color: red;
+    }
+</style>

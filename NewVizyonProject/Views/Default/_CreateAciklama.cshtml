@@ -13,17 +13,17 @@
                     <form class="form-group col-md-12">
                         <div class="col-md-6">
                             <label for="aciklama">Onay Tarihi</label>
-                            <input id="onayTarihi" name="onayTarihi" type="date" value="" />
+                            <input id="onayTarihi" name="onayTarihi" type="date" required value="" />
                         </div>
 
                         <div class="col-md-6">
                             <label for="aciklama">Puan Ver</label>
-                            <input id="puanVer" name="puanVer" type="number" value="1" min="1" max="10" />
+                            <input id="puanVer" name="puanVer" required type="number" value="1" min="1" max="10" />
                         </div>
 
                         <div class="col-md-12" style="margin-top:20px;">
                             <label for="aciklama">Açıklama</label>
-                            <textarea style="resize: none;" class="form-control" cols="20" id="Description" name="Description" rows="2"></textarea>
+                            <textarea style="resize: none;" class="form-control" cols="20" id="Description" name="Description" required rows="2"></textarea><span class="requiredField" id="txtdetayRequired" style="display:none;">Bu alan zorunludur!</span>
                         </div>
                     </form>
                 </div>
@@ -36,3 +36,8 @@
     </div>
 </div>
 
+<style>
+    .requiredField {
+        color: red;
+    }
+</style>
